@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        />
+        <title>Update Page</title>
+    </head>
+    <body>
+        <div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/create">Update User</a></li>
+            </ul>
+        </div>
+        <div class="container col-4">
+            <form action="/update-users" method="POST">
+                <fieldset class="bg-light border border-secondary p-4">
+                    <legend class="col-4">Update User</legend>
+                    <label for="fname">Name:</label>
+                    <input
+                        class="m-2"
+                        type="text"
+                        name="name"
+                        value="<%= data.Name %>"
+                    /><br /><br />
+                    <label for="email">Email:</label>
+                    <input
+                        class="m-2"
+                        type="email"
+                        name="email"
+                        value="<%= data.Email %>"
+                    /><br /><br />
+                    <label for="email">City:</label>
+                    <input
+                        class="m-2"
+                        type="text"
+                        name="city"
+                        value="<%= data.City %>"
+                    /><br /><br />
+                    <input class="m-2" type="number" name="id" value="<%= data.Id %>" hidden />
+                    <input class="m-2 btn bg-primary" type="submit" value="Update" />
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
