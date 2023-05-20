@@ -11,7 +11,7 @@
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous"
         />
-        <title>Update Page</title>
+        <title>Delete Product Page</title>
     </head>
     <body>
         <div>
@@ -25,25 +25,16 @@
             </ul>
         </div>
         <div class="container col-4">
-            <form action="/update-users" method="POST">
+            <form action="/API/delete-a-product" method="POST">
                 <fieldset class="bg-light border border-secondary p-4">
-                    <legend class="col-4">Update User</legend>
-                    <label for="fname">Name:</label>
-                    <input
-                        class="m-2"
-                        type="text"
-                        name="name"
-                        value="<%= data.Name %>"
-                    /><br /><br />
-                    <label for="email">Email:</label>
-                    <input
-                        class="m-2"
-                        type="email"
-                        name="email"
-                        value="<%= data.Email %>"
-                    /><br /><br />
+                    <legend class="col-4">Delete Product</legend>
+                    <label for="email"
+                        >Are you sure delete Category with name: <%= data.Name %> and Price: $ <%=
+                        data.Price %></label
+                    >
+                    <br /><br />
                     <input class="m-2" type="number" name="id" value="<%= data.id %>" hidden />
-                    <input class="m-2 btn bg-primary" type="submit" value="Update" />
+                    <input class="m-2 btn bg-primary" type="submit" value="Delete" />
                 </fieldset>
             </form>
         </div>

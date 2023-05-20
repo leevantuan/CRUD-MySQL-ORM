@@ -11,7 +11,7 @@
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous"
         />
-        <title>Update Page</title>
+        <title>Update Category Page</title>
     </head>
     <body>
         <div>
@@ -25,22 +25,22 @@
             </ul>
         </div>
         <div class="container col-4">
-            <form action="/update-users" method="POST">
+            <form action="/API/update-a-category" method="POST">
                 <fieldset class="bg-light border border-secondary p-4">
-                    <legend class="col-4">Update User</legend>
-                    <label for="fname">Name:</label>
+                    <legend class="col-4">Update Category</legend>
+                    <label for="fname">Category Name:</label>
                     <input
                         class="m-2"
                         type="text"
-                        name="name"
-                        value="<%= data.Name %>"
+                        name="CategoryName"
+                        value="<%= data.CategoryName %>"
                     /><br /><br />
-                    <label for="email">Email:</label>
+                    <label for="email">Made In:</label>
                     <input
                         class="m-2"
-                        type="email"
-                        name="email"
-                        value="<%= data.Email %>"
+                        type="text"
+                        name="MadeIn"
+                        value="<%= data.MadeIn %>"
                     /><br /><br />
                     <input class="m-2" type="number" name="id" value="<%= data.id %>" hidden />
                     <input class="m-2 btn bg-primary" type="submit" value="Update" />

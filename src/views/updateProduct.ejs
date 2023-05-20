@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        />
+        <title>Update Product Page</title>
+    </head>
+    <body>
+        <div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/create">Create Users</a></li>
+                <li><a href="/API/category">Category</a></li>
+                <li><a href="/API/create-category">Create Category</a></li>
+                <li><a href="/API/product">Product</a></li>
+                <li><a href="/API/create-product">Create Product</a></li>
+            </ul>
+        </div>
+        <div class="container col-6">
+            <form class="row g-3" action="/API/update-a-product" method="POST">
+                <div class="col-md-12">
+                    <h1>Update Product</h1>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Name: </label>
+                    <input type="text" class="form-control" name="name" value="<%= data.Name %>" />
+                </div>
+                <div class="col-md-6">
+                    <label for="inputPassword4" class="form-label">Price: </label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="price"
+                        value="<%= data.Price %>"
+                    />
+                </div>
+                <div class="col-12 mt-4">
+                    <label for="inputAddress" class="form-label">Detail: </label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="detail"
+                        value="<%= data.Detail %>"
+                    />
+                </div>
+                <div class="col-12 mt-4">
+                    <label for="inputAddress2" class="form-label">Image Link: </label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="image"
+                        value="<%= data.Image %>"
+                    />
+                </div>
+
+                <div class="col-md-4 mt-4">
+                    <label for="sale" class="form-label">Sale: </label>
+                    <select name="sale" class="form-select col-md-12 p-2" value="<%= data.Sale %>">
+                        <option value="0">False</option>
+                        <option value="1">True</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <label for="news" class="form-label">New: </label>
+                    <select
+                        id="news"
+                        name="news"
+                        class="form-select col-md-12 p-2"
+                        value="<%= data.New %>"
+                    >
+                        <option value="0">False</option>
+                        <option value="1">True</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <label for="category" class="form-label">Category: </label>
+                    <select
+                        id="category"
+                        name="category"
+                        class="form-select col-md-12 p-2"
+                        value="<%= data.Category %>"
+                    >
+                        <option value="Jordan 1 Mid 2023">Jordan 1 Mid 2023</option>
+                        <option value="Jordan 2 Mid 2023">Jordan 2 Mid 2023</option>
+                        <option value="Jordan 3 Mid 2023">Jordan 3 Mid 2023</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mt-4" hidden>
+                    <label for="inputAddress2" class="form-label">Quantity: </label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="quantity"
+                        value="1"
+                        value="<%= data.Quantity %>"
+                    />
+                </div>
+                <div class="col-md-6 mt-4">
+                    <label for="inputAddress2" class="form-label">List Image ID: </label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        name="listImgID"
+                        value="<%= data.ListImgID %>"
+                    />
+                </div>
+                <input class="m-2" type="number" name="id" value="<%= data.id %>" hidden />
+                <div class="col-12 mt-4">
+                    <button type="submit" class="btn btn-primary">Update Product</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

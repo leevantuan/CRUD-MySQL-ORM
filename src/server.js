@@ -3,7 +3,7 @@ require('dotenv').config()
 const express = require('express');
 const configViewEngine = require('./config/viewEngine');
 const webRouters = require('./routes/web');
-const connection = require('./config/database')
+const APIRouters = require('./routes/api');
 
 const app = express()
 //.env check
@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true })) // for form data
 
 //Routes
 app.use('/', webRouters)
+app.use('/API', APIRouters)
 
 app.listen(port, () => {
     console.log(`Example app listening on port http://${hostname}:${port}`)

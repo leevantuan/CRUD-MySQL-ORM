@@ -11,7 +11,7 @@
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous"
         />
-        <title>Update Page</title>
+        <title>Create Category Page</title>
     </head>
     <body>
         <div>
@@ -19,31 +19,20 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/create">Create Users</a></li>
                 <li><a href="/API/category">Category</a></li>
-                <li><a href="/API/create-category">Create Category</a></li>
+                <li><a class="active" href="/API/create-category">Create Category</a></li>
                 <li><a href="/API/product">Product</a></li>
                 <li><a href="/API/create-product">Create Product</a></li>
             </ul>
         </div>
         <div class="container col-4">
-            <form action="/update-users" method="POST">
+            <form action="/API/create-a-category" method="POST">
                 <fieldset class="bg-light border border-secondary p-4">
-                    <legend class="col-4">Update User</legend>
-                    <label for="fname">Name:</label>
-                    <input
-                        class="m-2"
-                        type="text"
-                        name="name"
-                        value="<%= data.Name %>"
-                    /><br /><br />
-                    <label for="email">Email:</label>
-                    <input
-                        class="m-2"
-                        type="email"
-                        name="email"
-                        value="<%= data.Email %>"
-                    /><br /><br />
-                    <input class="m-2" type="number" name="id" value="<%= data.id %>" hidden />
-                    <input class="m-2 btn bg-primary" type="submit" value="Update" />
+                    <legend class="col-4">Add Category</legend>
+                    <label for="fname">Category Name:</label>
+                    <input class="m-2" type="text" name="CategoryName" /><br /><br />
+                    <label for="email">Made In:</label>
+                    <input class="m-2" type="text" name="MadeIn" /><br /><br />
+                    <input class="m-2 btn bg-primary" type="submit" value="Create" />
                 </fieldset>
             </form>
         </div>

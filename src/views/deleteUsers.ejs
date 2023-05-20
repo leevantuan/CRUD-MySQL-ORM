@@ -17,7 +17,11 @@
         <div>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/create">Update User</a></li>
+                <li><a href="/create">Create Users</a></li>
+                <li><a href="/API/category">Category</a></li>
+                <li><a href="/API/create-category">Create Category</a></li>
+                <li><a href="/API/product">Product</a></li>
+                <li><a href="/API/create-product">Create Product</a></li>
             </ul>
         </div>
         <div class="container col-4">
@@ -28,7 +32,7 @@
                         >Are you sure delete User with email: <%= data.Email %></label
                     >
                     <br /><br />
-                    <input class="m-2" type="number" name="id" value="<%= data.Id %>" hidden />
+                    <input class="m-2" type="number" name="id" value="<%= data.id %>" hidden />
                     <input class="m-2 btn bg-primary" type="submit" value="Delete" />
                 </fieldset>
             </form>
