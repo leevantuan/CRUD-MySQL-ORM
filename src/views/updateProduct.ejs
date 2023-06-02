@@ -82,15 +82,16 @@
                 </div>
                 <div class="col-md-4 mt-4">
                     <label for="category" class="form-label">Category: </label>
+
                     <select
                         id="category"
                         name="category"
                         class="form-select col-md-12 p-2"
                         value="<%= data.Category %>"
                     >
-                        <option value="Jordan 1 Mid 2023">Jordan 1 Mid 2023</option>
-                        <option value="Jordan 2 Mid 2023">Jordan 2 Mid 2023</option>
-                        <option value="Jordan 3 Mid 2023">Jordan 3 Mid 2023</option>
+                        <% category.forEach(function(category) { %>
+                        <option value="<%= category.id %>"><%= category.CategoryName %></option>
+                        <% }) %>
                     </select>
                 </div>
                 <div class="col-md-6 mt-4" hidden>
@@ -103,7 +104,7 @@
                         value="<%= data.Quantity %>"
                     />
                 </div>
-                <div class="col-md-6 mt-4">
+                <!-- <div class="col-md-6 mt-4">
                     <label for="inputAddress2" class="form-label">List Image ID: </label>
                     <input
                         type="number"
@@ -111,7 +112,7 @@
                         name="listImgID"
                         value="<%= data.ListImgID %>"
                     />
-                </div>
+                </div> -->
                 <input class="m-2" type="number" name="id" value="<%= data.id %>" hidden />
                 <div class="col-12 mt-4">
                     <button type="submit" class="btn btn-primary">Update Product</button>

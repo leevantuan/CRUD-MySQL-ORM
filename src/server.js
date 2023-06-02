@@ -1,11 +1,13 @@
 //Import express
 require('dotenv').config()
 const express = require('express');
+const cors = require('cors');
 const configViewEngine = require('./config/viewEngine');
 const webRouters = require('./routes/web');
 const APIRouters = require('./routes/api');
 
-const app = express()
+const app = express();
+app.use(cors());
 //.env check
 const port = process.env.PORT || 6969;
 const hostname = process.env.HOST_NAME;

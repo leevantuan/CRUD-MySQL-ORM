@@ -1,6 +1,20 @@
 const connection = require('../config/database');
 const db = require('../models/index')
 
+const getAllCategories = async () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let category = await db.Category.findAll({
+                raw: true
+            })
+            if (category) {
+                resolve(category)
+            }
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 const getFindCategoryId = async (Id) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -65,5 +79,5 @@ const DeleteCategory = async (Id) => {
     })
 }
 module.exports = {
-    CreateCategory, getFindCategoryId, UpdateCategory, DeleteCategory
+    CreateCategory, getFindCategoryId, UpdateCategory, DeleteCategory, getAllCategories
 }

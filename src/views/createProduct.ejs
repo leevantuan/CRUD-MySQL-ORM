@@ -31,19 +31,19 @@
                 </div>
                 <div class="col-md-6">
                     <label for="inputEmail4" class="form-label">Name: </label>
-                    <input type="text" class="form-control" name="name" />
+                    <input type="text" class="form-control" name="name" required />
                 </div>
                 <div class="col-md-6">
                     <label for="inputPassword4" class="form-label">Price: </label>
-                    <input type="text" class="form-control" name="price" />
+                    <input type="text" class="form-control" name="price" required />
                 </div>
                 <div class="col-12 mt-4">
                     <label for="inputAddress" class="form-label">Detail: </label>
-                    <input type="text" class="form-control" name="detail" />
+                    <input type="text" class="form-control" name="detail" required />
                 </div>
                 <div class="col-12 mt-4">
                     <label for="inputAddress2" class="form-label">Image Link: </label>
-                    <input type="text" class="form-control" name="image" />
+                    <input type="text" class="form-control" name="image" required />
                 </div>
 
                 <div class="col-md-4 mt-4">
@@ -60,22 +60,23 @@
                         <option value="1">True</option>
                     </select>
                 </div>
+
                 <div class="col-md-4 mt-4">
                     <label for="inputState" class="form-label">Category: </label>
                     <select name="category" class="form-select col-md-12 p-2">
-                        <option value="Jordan 1 Mid 2023" selected>Jordan 1 Mid 2023</option>
-                        <option value="Jordan 2 Mid 2023">Jordan 2 Mid 2023</option>
-                        <option value="Jordan 3 Mid 2023">Jordan 3 Mid 2023</option>
+                        <% data.forEach(function(data) { %>
+                        <option value="<%= data.id %>"><%= data.CategoryName %></option>
+                        <% }) %>
                     </select>
                 </div>
                 <div class="col-md-6 mt-4" hidden>
                     <label for="inputAddress2" class="form-label">Quantity: </label>
                     <input type="text" class="form-control" name="quantity" value="1" />
                 </div>
-                <div class="col-md-6 mt-4">
-                    <label for="inputAddress2" class="form-label">List Image ID: </label>
-                    <input type="number" class="form-control" name="listImgID" />
-                </div>
+                <!-- <div class="col-md-6 mt-4">
+                    <label for="inputAddress2" class="form-label">List Image: </label>
+                    <input type="text" class="form-control" name="listImg" required />
+                </div> -->
 
                 <div class="col-12 mt-4">
                     <button type="submit" class="btn btn-primary">Create Product</button>

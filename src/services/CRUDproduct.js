@@ -1,6 +1,20 @@
 const connection = require('../config/database');
 const db = require('../models/index')
 
+const getAllProducts = async () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let product = await db.Product.findAll({
+                raw: true
+            })
+            if (product) {
+                resolve(product)
+            }
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 const getFindProductId = async (Id) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -17,7 +31,7 @@ const getFindProductId = async (Id) => {
 //Create in CRUD
 const CreateProduct = async (data) => {
 
-    let { name, price, detail, image, sale, news, category, quantity, listImgID } = data;
+    let { name, price, detail, image, sale, news, category, quantity } = data;
     return new Promise(async (resolve, reject) => {
         try {
             await db.Product.create({
@@ -27,8 +41,7 @@ const CreateProduct = async (data) => {
                 Image: image,
                 Sale: sale === '1' ? true : false,
                 New: news === '1' ? true : false,
-                Category: category,
-                ListImgID: listImgID,
+                CategoryId: category,
                 Quantity: quantity,
             })
             resolve()
@@ -36,11 +49,12 @@ const CreateProduct = async (data) => {
             reject(e)
         }
     })
+    // console.log(name, price, detail, image, sale, news, category, quantity)
 }
 //Update in CRUD
 const UpdateProduct = async (data) => {
 
-    let { name, price, detail, image, sale, news, category, quantity, listImgID, id } = data;
+    let { name, price, detail, image, sale, news, category, quantity, id } = data;
 
     return new Promise(async (resolve, reject) => {
         try {
@@ -53,8 +67,7 @@ const UpdateProduct = async (data) => {
                     Image: image,
                     Sale: sale === '1' ? true : false,
                     New: news === '1' ? true : false,
-                    Category: category,
-                    ListImgID: listImgID,
+                    CategoryId: category,
                     Quantity: quantity,
                 });
             }
@@ -79,5 +92,5 @@ const DeleteProduct = async (Id) => {
     })
 }
 module.exports = {
-    CreateProduct, getFindProductId, UpdateProduct, DeleteProduct
+    CreateProduct, getFindProductId, UpdateProduct, DeleteProduct, getAllProducts
 }

@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            // Product.belongsTo(models.Category);
+            // models.Category.hasMany(Product);
         }
     }
     Product.init({
@@ -20,12 +22,13 @@ module.exports = (sequelize, DataTypes) => {
         Image: DataTypes.STRING,
         Sale: DataTypes.BOOLEAN,
         New: DataTypes.BOOLEAN,
-        Category: DataTypes.STRING,
-        ListImgID: DataTypes.INTEGER,
+        CategoryId: DataTypes.INTEGER,
         Quantity: DataTypes.INTEGER,
+        // ListImg: DataTypes.INTEGER,
     }, {
         sequelize,
         modelName: 'Product',
     });
+
     return Product;
 };

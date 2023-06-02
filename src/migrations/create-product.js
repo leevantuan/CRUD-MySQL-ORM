@@ -1,4 +1,7 @@
 'product strict';
+
+const { DataTypes } = require('sequelize');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
@@ -27,15 +30,16 @@ module.exports = {
             New: {
                 type: Sequelize.BOOLEAN
             },
-            Category: {
-                type: Sequelize.STRING
-            },
-            ListImgID: {
+            CategoryId: {
                 type: Sequelize.INTEGER
             },
             Quantity: {
                 type: Sequelize.INTEGER
             },
+            // ListImg: {
+            //     type: Sequelize.JSON,
+            //     defaultValue: [],
+            // },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE

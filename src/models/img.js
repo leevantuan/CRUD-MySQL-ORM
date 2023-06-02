@@ -1,9 +1,9 @@
-'category strict';
+'img strict';
 const {
     Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class Category extends Model {
+    class Image extends Model {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
@@ -13,12 +13,12 @@ module.exports = (sequelize, DataTypes) => {
             // define association here
         }
     }
-    Category.init({
-        CategoryName: DataTypes.STRING,
-        MadeIn: DataTypes.STRING,
+    Image.init({
+        ImageLink: DataTypes.STRING,
+        ProductId: DataTypes.INTEGER,
     }, {
         sequelize,
-        modelName: 'Category',
+        modelName: 'Image',
     });
-    return Category;
+    return Image;
 };
