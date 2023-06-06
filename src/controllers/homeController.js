@@ -1,5 +1,6 @@
 const connection = require('../config/database')
 const db = require('../models/index')
+
 const { getAllUsers, getFindUserId, postCreateUser, postUpdateUser, postDeleteUser } = require('../services/CRUDservices')
 
 const getCreateUsers = (req, res) => {
@@ -23,13 +24,14 @@ const getDeleteUsers = async (req, res) => {
 }
 
 const getDemoEjs = async (req, res) => {
-    try {
-        let data = await getAllUsers();
-        res.send(JSON.stringify(data))
-    } catch (e) {
-        console.log(e)
-    }
+    let data = await getAllUsers();
+
+    return res.status(200).json({
+        data
+
+    });
 }
+
 //Reading in CRUD
 const getHomePage = async (req, res) => {
     try {
@@ -40,24 +42,31 @@ const getHomePage = async (req, res) => {
     }
 }
 //Create in CRUD
-const postCreateUsers = async (req, res) => {
-    let data = req.body;
-    await postCreateUser(data);
-    res.redirect('/')
-}
+// const postCreateUsers = 
+// async (req, res) => {
+//     let data = req.body;
+//     await postCreateUser(data);
+//     res.redirect('/')
+// }
+
+
 //Update in CRUD
 const postUpdateUsers = async (req, res) => {
     let data = req.body;
     await postUpdateUser(data)
-    res.redirect('/')
+    // console.log(data)
+    // res.redirect('/')
+    res.send("Update success!")
 }
 //Delete in CRUD
 const postDeleteUsers = async (req, res) => {
     let id = req.body.id;
     await postDeleteUser(id)
-    res.redirect('/')
+    // res.redirect('/')
+    // console.log(id)
+    res.send("Delete success!")
 }
 
 module.exports = {
-    getHomePage, getDemoEjs, postCreateUsers, getCreateUsers, getUpdateUsers, postUpdateUsers, getDeleteUsers, postDeleteUsers
+    getHomePage, getDemoEjs, getCreateUsers, getUpdateUsers, postUpdateUsers, getDeleteUsers, postDeleteUsers
 }

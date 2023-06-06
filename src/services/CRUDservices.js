@@ -1,5 +1,8 @@
 const connection = require('../config/database');
-const db = require('../models/index')
+const db = require('../models/index');
+const bcrypt = require('bcrypt');
+
+const salt = bcrypt.genSaltSync(10);
 
 const getFindUserId = async (Id) => {
     return new Promise(async (resolve, reject) => {
@@ -14,22 +17,38 @@ const getFindUserId = async (Id) => {
     })
 
 }
+// hash pass
+//let check = await bcrypt.compareSync(password, user.password);
+let hashUserPassword = (password) => {
+    //nếu tốt thì sẽ chạy (réolve) còn không sẽ bị từ chối (reject) js
+    return new Promise(async (resolve, reject) => {
+        try {
+            const hashPassword = await bcrypt.hashSync(password, salt);
+            resolve(hashPassword);
+        } catch (e) {
+            reject(e);
+        }
+        // Store hash in your password DB.
+    });
+};
 //Create in CRUD
 const postCreateUser = async (data) => {
 
-    let { name, email } = data;
+    let { Name, Phone, PassWord, RoleID } = data;
+    let HashPassWord = await hashUserPassword(PassWord);
     return new Promise(async (resolve, reject) => {
         try {
             await db.User.create({
-                Name: name,
-                Email: email,
+                Name: Name,
+                Phone: Phone,
+                PassWord: HashPassWord,
+                RoleID: RoleID
             })
             resolve()
         } catch (e) {
             reject(e)
         }
     })
-
 }
 //Read in CRUD
 const getAllUsers = async () => {
@@ -44,26 +63,33 @@ const getAllUsers = async () => {
         }
     })
 }
+
 //Update in CRUD
 const postUpdateUser = async (data) => {
 
-    let { name, email, id } = data;
+    let { Name, Phone, PassWord, RoleID, id } = data;
 
     return new Promise(async (resolve, reject) => {
         try {
+            let HashPassWord = await hashUserPassword(PassWord);
             let user = await db.User.findOne({ where: { id: id } })
             if (user) {
                 await user.update({
-                    Name: name,
-                    Email: email
+                    Name: Name,
+                    Phone: Phone,
+                    PassWord: HashPassWord,
+                    RoleID: RoleID
                 });
             }
+            // console.log(user)
             resolve()
         } catch (e) {
             reject(e)
         }
     })
+    // console.log(Name, Phone, PassWord, RoleID, id)
 }
+
 //Delete in CRUD
 const postDeleteUser = async (Id) => {
     return new Promise(async (resolve, reject) => {

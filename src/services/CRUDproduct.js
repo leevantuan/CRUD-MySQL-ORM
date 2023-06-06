@@ -31,7 +31,14 @@ const getFindProductId = async (Id) => {
 //Create in CRUD
 const CreateProduct = async (data) => {
 
-    let { name, price, detail, image, sale, news, category, quantity } = data;
+    let name = data.Name;
+    let price = data.Price;
+    let detail = data.Detail;
+    let image = data.Image;
+    let sale = data.Sale;
+    let news = data.New;
+    let category = data.CategoryId;
+    let quantity = data.Quantity;
     return new Promise(async (resolve, reject) => {
         try {
             await db.Product.create({
@@ -49,12 +56,19 @@ const CreateProduct = async (data) => {
             reject(e)
         }
     })
-    // console.log(name, price, detail, image, sale, news, category, quantity)
 }
 //Update in CRUD
 const UpdateProduct = async (data) => {
 
-    let { name, price, detail, image, sale, news, category, quantity, id } = data;
+    let name = data.Name;
+    let price = data.Price;
+    let detail = data.Detail;
+    let image = data.Image;
+    let sale = data.Sale;
+    let news = data.New;
+    let category = data.CategoryId;
+    let quantity = data.Quantity;
+    let id = data.id;
 
     return new Promise(async (resolve, reject) => {
         try {

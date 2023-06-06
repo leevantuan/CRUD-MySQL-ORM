@@ -18,7 +18,9 @@ const getCreateCategory = (req, res) => {
 const postCreateCategory = async (req, res) => {
     let data = req.body;
     await CreateCategory(data);
-    res.redirect('/API/category')
+    // res.redirect('/API/category')
+    // console.log(data)
+    res.send("Create success!")
 }
 //Reading in CRUD
 const getReadCategory = async (req, res) => {
@@ -44,7 +46,9 @@ const getUpdateCategory = async (req, res) => {
 const postUpdateCategory = async (req, res) => {
     let data = req.body;
     await UpdateCategory(data)
-    res.redirect('/API/category')
+    // console.log(data)
+    // res.redirect('/API/category')
+    res.send("Update success!")
 }
 //Delete in CRUD
 const getDeleteCategory = async (req, res) => {
@@ -56,7 +60,9 @@ const getDeleteCategory = async (req, res) => {
 const postDeleteCategory = async (req, res) => {
     let id = req.body.id;
     await DeleteCategory(id)
-    res.redirect('/API/category')
+    // console.log(id)
+    // res.redirect('/API/category')
+    res.send("Delete success!")
 }
 
 
@@ -86,7 +92,9 @@ const getCreateProduct = async (req, res) => {
 const postCreateProduct = async (req, res) => {
     let data = req.body;
     await CreateProduct(data)
-    res.redirect('/API/product')
+    // res.redirect('/API/product')
+    // console.log(data)
+    res.send("Create success!")
 }
 //Update in CRUD
 const getUpdateProduct = async (req, res) => {
@@ -99,7 +107,9 @@ const getUpdateProduct = async (req, res) => {
 const postUpdateProduct = async (req, res) => {
     let data = req.body;
     await UpdateProduct(data)
-    res.redirect('/API/product')
+    // console.log(data)
+    // res.redirect('/API/product')
+    res.send("Update success!")
 }
 //Delete
 const getDeleteProduct = async (req, res) => {
@@ -111,7 +121,9 @@ const getDeleteProduct = async (req, res) => {
 const postDeleteProduct = async (req, res) => {
     let id = req.body.id;
     await DeleteProduct(id)
-    res.redirect('/API/product')
+    // console.log(id)
+    // res.redirect('/API/product')
+    res.send("Delete success!")
 }
 ///IMAGE ---------------------------------------
 //read
@@ -141,7 +153,9 @@ const getCreateImage = async (req, res) => {
 const postCreateImage = async (req, res) => {
     let data = req.body;
     await CreateImage(data)
-    res.redirect('/API/image')
+    // res.redirect('/API/image')
+    // console.log(data)
+    res.send("Create success!")
 }
 //Update in CRUD
 const getUpdateImage = async (req, res) => {
@@ -154,7 +168,9 @@ const getUpdateImage = async (req, res) => {
 const postUpdateImage = async (req, res) => {
     let data = req.body;
     await UpdateImage(data)
-    res.redirect('/API/image')
+    // res.redirect('/API/image')
+    // console.log(data)
+    res.send("Update success!")
 }
 //Delete
 const getDeleteImage = async (req, res) => {
@@ -166,7 +182,9 @@ const getDeleteImage = async (req, res) => {
 const postDeleteImage = async (req, res) => {
     let id = req.body.id;
     await DeleteImage(id)
-    res.redirect('/API/image')
+    // res.redirect('/API/image')
+    // console.log(id)
+    res.send("Delete success!")
 }
 
 module.exports = {
