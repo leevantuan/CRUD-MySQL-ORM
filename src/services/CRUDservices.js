@@ -87,7 +87,6 @@ const postUpdateUser = async (data) => {
             reject(e)
         }
     })
-    // console.log(Name, Phone, PassWord, RoleID, id)
 }
 
 //Delete in CRUD

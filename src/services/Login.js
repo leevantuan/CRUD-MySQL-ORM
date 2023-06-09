@@ -123,7 +123,7 @@ const LoginWithAdmin = async (req, res) => {
             });
         }
     }
-    return res.status(400).json({ message: "Error phone number or password! Check your phone number and password, Please!" });
+    return res.status(200).json({ message: "Error phone number or password! Check your phone number and password, Please!" });
 
 }
 
