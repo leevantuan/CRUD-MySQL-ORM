@@ -4,6 +4,7 @@ const {
     postCreateCategory, getCreateCategory, getReadCategory, getUpdateCategory, postUpdateCategory, getDeleteCategory, postDeleteCategory, getCategories,
     getCreateProduct, postCreateProduct, getReadProduct, getUpdateProduct, postUpdateProduct, getDeleteProduct, postDeleteProduct, getProducts,
     getCreateImage, postCreateImage, getReadImage, getUpdateImage, postUpdateImage, getDeleteImage, postDeleteImage, getImages,
+    postCreateCart, postUpdateCart, postDeleteCart, getCarts,
 } = require('../controllers/APIController')
 
 
@@ -57,4 +58,16 @@ routerAPI.post('/create-a-image', postCreateImage)
 routerAPI.put('/create-a-image', postUpdateImage)
 
 routerAPI.delete('/create-a-image', postDeleteImage)
+
+//Cart
+routerAPI.get('/carts', getCarts)
+
+// routerAPI.get('/cart', getReadCart)
+
+routerAPI.post('/create-a-cart', postCreateCart)
+
+routerAPI.put('/create-a-cart', postUpdateCart)
+
+routerAPI.delete('/create-a-cart', postDeleteCart)
+
 module.exports = routerAPI;

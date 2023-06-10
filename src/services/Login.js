@@ -15,7 +15,7 @@ const LoginWithUsers = async (req, res) => {
         let check = await bcrypt.compareSync(data.PassWord, user.PassWord);
         if (check) {
 
-            let token = jwt.sign({ data: { Name: user.Name, Phone: user.Phone, PassWord: "Not Show", RoleID: "Not Show" } }, process.env.JWT_SECRET, { expiresIn: '3 days' });
+            let token = jwt.sign({ data: { id: user.id, Name: user.Name, Phone: user.Phone, PassWord: "Not Show", RoleID: "Not Show" } }, process.env.JWT_SECRET, { expiresIn: '3 days' });
 
             // let refreshToken = jwt.sign({ data: user }, process.env.JWT_REFRESH_SECRET, { expiresIn: '7 days' });
             // RefreshTokens.push(refreshToken);

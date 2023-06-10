@@ -2,6 +2,7 @@ const db = require('../models/index')
 const { CreateCategory, getFindCategoryId, UpdateCategory, DeleteCategory, getAllCategories } = require('../services/CRUDcategory')
 const { getFindProductId, UpdateProduct, CreateProduct, DeleteProduct, getAllProducts } = require('../services/CRUDproduct')
 const { CreateImage, getFindImageId, UpdateImage, DeleteImage, getAllImages } = require('../services/CRUDimage')
+const { CreateCart, UpdateCart, DeleteCart, getAllCarts } = require('../services/CRUDcart')
 
 const getCategories = async (req, res) => {
 
@@ -186,9 +187,49 @@ const postDeleteImage = async (req, res) => {
     // console.log(id)
     res.send("Delete success!")
 }
+//Cart
+//C
+const postCreateCart = async (req, res) => {
+    let data = req.body;
+
+    let CheckProduct = await db.Cart.findOne({ where: { ProductID: data.ProductID } })
+
+    if (CheckProduct) {
+        return res.status(200).json({ message: "The product is already in the cart!" })
+    }
+    await CreateCart(data)
+    // console.log(data)
+    res.send("Create success!")
+}
+//U
+const postUpdateCart = async (req, res) => {
+    let data = req.body;
+    await UpdateCart(data)
+    // console.log(data)
+    res.send("Update success!")
+}
+//D
+const postDeleteCart = async (req, res) => {
+    let id = req.body.id;
+    await DeleteCart(id)
+    // console.log(id)
+    res.send("Delete success!")
+}
+//read
+const getCarts = async (req, res) => {
+    let data = await getAllCarts();
+
+    return res.status(200).json({
+        data
+
+    });
+    // res.send("R success!")
+
+}
 
 module.exports = {
     getCreateCategory, postCreateCategory, getReadCategory, getUpdateCategory, postUpdateCategory, getDeleteCategory, postDeleteCategory, getCategories,
     getCreateProduct, postCreateProduct, getReadProduct, getUpdateProduct, postUpdateProduct, getDeleteProduct, postDeleteProduct, getProducts,
     getCreateImage, postCreateImage, getReadImage, getUpdateImage, postUpdateImage, getDeleteImage, postDeleteImage, getImages,
+    postCreateCart, postUpdateCart, postDeleteCart, getCarts,
 }
