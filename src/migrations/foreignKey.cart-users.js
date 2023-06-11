@@ -10,24 +10,24 @@ module.exports = {
          * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
          */
         queryInterface.addConstraint('Carts', {
-            fields: ["UserID"],
+            fields: ["Phone"],
             type: 'foreign key',
             name: 'cart-user',
             references: {
                 table: 'Users',
-                field: 'id'
+                field: 'Phone'
             }
         })
     },
 
     async down(queryInterface, Sequelize) {
         queryInterface.addConstraint('Carts', {
-            fields: ["UserID"],
+            fields: ["Phone"],
             type: 'foreign key',
             name: 'cart-user',
             references: {
                 table: 'Users',
-                field: 'id'
+                field: 'Phone'
             }
         })
         /**

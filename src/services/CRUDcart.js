@@ -19,7 +19,7 @@ const getAllCarts = async () => {
 //Create in CRUD
 const CreateCart = async (data) => {
 
-    let { UserID, ProductID, Size } = data;
+    let { Phone, ProductID, Size } = data;
 
     // let CheckProduct = await db.Cart.findOne({ where: { ProductID: ProductID } })
 
@@ -29,7 +29,7 @@ const CreateCart = async (data) => {
     return new Promise(async (resolve, reject) => {
         try {
             await db.Cart.create({
-                UserID: UserID,
+                Phone: Phone,
                 ProductID: ProductID,
                 Size: Size,
             })
@@ -42,14 +42,14 @@ const CreateCart = async (data) => {
 //Update in CRUD
 const UpdateCart = async (data) => {
 
-    let { UserID, ProductID, Size, id } = data;
+    let { Phone, ProductID, Size, id } = data;
 
     return new Promise(async (resolve, reject) => {
         try {
             let cart = await db.Cart.findOne({ where: { id: id } })
             if (cart) {
                 await cart.update({
-                    UserID: UserID,
+                    Phone: Phone,
                     ProductID: ProductID,
                     Size: Size,
                 });

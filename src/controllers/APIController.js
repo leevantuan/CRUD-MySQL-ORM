@@ -193,8 +193,9 @@ const postCreateCart = async (req, res) => {
     let data = req.body;
 
     let CheckProduct = await db.Cart.findOne({ where: { ProductID: data.ProductID } })
+    let CheckPhone = await db.User.findOne({ where: { Phone: data.Phone } })
 
-    if (CheckProduct) {
+    if (CheckProduct && CheckPhone) {
         return res.status(200).json({ message: "The product is already in the cart!" })
     }
     await CreateCart(data)
