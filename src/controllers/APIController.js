@@ -2,7 +2,7 @@ const db = require('../models/index')
 const { CreateCategory, getFindCategoryId, UpdateCategory, DeleteCategory, getAllCategories } = require('../services/CRUDcategory')
 const { getFindProductId, UpdateProduct, CreateProduct, DeleteProduct, getAllProducts } = require('../services/CRUDproduct')
 const { CreateImage, getFindImageId, UpdateImage, DeleteImage, getAllImages } = require('../services/CRUDimage')
-const { CreateCart, UpdateCart, DeleteCart, getAllCarts } = require('../services/CRUDcart')
+const { CreateCart, UpdateCart, DeleteCart, getAllCarts, CreateOrder, UpdateCartStatus, getAllOrders, UpdateOrder, DeleteOrder } = require('../services/CRUDcart')
 
 const getCategories = async (req, res) => {
 
@@ -187,19 +187,23 @@ const postDeleteImage = async (req, res) => {
     // console.log(id)
     res.send("Delete success!")
 }
-//Cart
+
+//Cart----------------------------------------
 //C
 const postCreateCart = async (req, res) => {
     let data = req.body;
 
-    let CheckProduct = await db.Cart.findOne({ where: { ProductID: data.ProductID } })
-    let CheckPhone = await db.User.findOne({ where: { Phone: data.Phone } })
+    let CheckPhone = await db.Cart.findAll({ where: { Phone: data.Phone }, raw: true })
 
-    if (CheckProduct && CheckPhone) {
+    let CheckStatus = CheckPhone.filter((event) => event.Status === 1)
+
+    let CheckProduct = CheckStatus.find((e) => e.ProductID == data.ProductID)
+
+    if (CheckProduct) {
         return res.status(200).json({ message: "The product is already in the cart!" })
     }
     await CreateCart(data)
-    // console.log(data)
+    // console.log(CheckProduct)
     res.send("Create success!")
 }
 //U
@@ -208,6 +212,13 @@ const postUpdateCart = async (req, res) => {
     await UpdateCart(data)
     // console.log(data)
     res.send("Update success!")
+}
+//u status
+const postUpdateCartStatus = async (req, res) => {
+    let data = req.body;
+    await UpdateCartStatus(data)
+    // console.log(data)
+    res.send("Update status success!")
 }
 //D
 const postDeleteCart = async (req, res) => {
@@ -225,12 +236,45 @@ const getCarts = async (req, res) => {
 
     });
     // res.send("R success!")
+}
 
+
+//-------------C
+const postCreateOrder = async (req, res) => {
+    let data = req.body;
+    await CreateOrder(data)
+    console.log(data)
+    res.send("Create success!")
+
+}
+// R
+const getOrders = async (req, res) => {
+    let data = await getAllOrders();
+
+    return res.status(200).json({
+        data
+
+    });
+    // res.send("R success!")
+}
+//U
+const postUpdateOrder = async (req, res) => {
+    let data = req.body;
+    await UpdateOrder(data)
+    // console.log(data)
+    res.send("Update success!")
+}
+//D
+const postDeleteOrder = async (req, res) => {
+    let id = req.body.id;
+    await DeleteOrder(id)
+    // console.log(id)
+    res.send("Delete success!")
 }
 
 module.exports = {
     getCreateCategory, postCreateCategory, getReadCategory, getUpdateCategory, postUpdateCategory, getDeleteCategory, postDeleteCategory, getCategories,
     getCreateProduct, postCreateProduct, getReadProduct, getUpdateProduct, postUpdateProduct, getDeleteProduct, postDeleteProduct, getProducts,
     getCreateImage, postCreateImage, getReadImage, getUpdateImage, postUpdateImage, getDeleteImage, postDeleteImage, getImages,
-    postCreateCart, postUpdateCart, postDeleteCart, getCarts,
+    postCreateCart, postUpdateCart, postDeleteCart, getCarts, postCreateOrder, postUpdateCartStatus, getOrders, postUpdateOrder, postDeleteOrder
 }

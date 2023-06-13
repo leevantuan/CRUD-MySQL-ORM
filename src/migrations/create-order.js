@@ -1,29 +1,35 @@
-'cart strict';
+'order strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.createTable('Carts', {
+        await queryInterface.createTable('Orders', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
+            Status: {
+                type: Sequelize.STRING
+            },
+            Address: {
+                type: Sequelize.STRING
+            },
             Phone: {
                 type: Sequelize.STRING
             },
-            ProductID: {
-                type: Sequelize.INTEGER
+            Total: {
+                type: Sequelize.STRING
             },
-            Size: {
-                type: Sequelize.INTEGER
+            ListCart: {
+                type: Sequelize.JSON,
             },
-            Quantity: {
-                type: Sequelize.INTEGER
-            },
-            Status: {
-                type: Sequelize.INTEGER
-            },
+            // Size: {
+            //     type: Sequelize.INTEGER
+            // },
+            // Quantity: {
+            //     type: Sequelize.INTEGER
+            // },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE
@@ -35,6 +41,6 @@ module.exports = {
         });
     },
     async down(queryInterface, Sequelize) {
-        await queryInterface.dropTable('Carts');
+        await queryInterface.dropTable('Orders');
     }
 };
