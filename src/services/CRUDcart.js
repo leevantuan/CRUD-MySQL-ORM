@@ -144,6 +144,21 @@ const DeleteCart = async (Id) => {
         }
     })
 }
+//delete cart user
+const DeleteCartUser = async (data) => {
+    let { id, Status } = data;
+    return new Promise(async (resolve, reject) => {
+        try {
+            let cart = await db.Cart.findOne({ where: { id: id } })
+            if (cart.Status === Status) {
+                await cart.destroy();
+            }
+            resolve()
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 
 //Update in CRUD order
 const UpdateOrder = async (data) => {
@@ -180,5 +195,5 @@ const DeleteOrder = async (Id) => {
     })
 }
 module.exports = {
-    CreateCart, UpdateCart, DeleteCart, getAllCarts, CreateOrder, UpdateCartStatus, getAllOrders, UpdateOrder, DeleteOrder
+    CreateCart, UpdateCart, DeleteCart, getAllCarts, CreateOrder, UpdateCartStatus, getAllOrders, UpdateOrder, DeleteOrder, DeleteCartUser
 }

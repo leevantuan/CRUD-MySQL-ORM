@@ -2,7 +2,7 @@ const db = require('../models/index')
 const { CreateCategory, UpdateCategory, DeleteCategory, getAllCategories } = require('../services/CRUDcategory')
 const { UpdateProduct, CreateProduct, DeleteProduct, getAllProducts } = require('../services/CRUDproduct')
 const { CreateImage, UpdateImage, DeleteImage, getAllImages } = require('../services/CRUDimage')
-const { CreateCart, UpdateCart, DeleteCart, getAllCarts, CreateOrder, UpdateCartStatus, getAllOrders, UpdateOrder, DeleteOrder } = require('../services/CRUDcart')
+const { CreateCart, UpdateCart, DeleteCart, getAllCarts, CreateOrder, UpdateCartStatus, getAllOrders, UpdateOrder, DeleteOrder, DeleteCartUser } = require('../services/CRUDcart')
 
 const getCategories = async (req, res) => {
     let data = await getAllCategories();
@@ -151,7 +151,12 @@ const postUpdateCartStatus = async (req, res) => {
 const postDeleteCart = async (req, res) => {
     let id = req.body.id;
     await DeleteCart(id)
-    // console.log(id)
+    res.send("Delete success!")
+}
+//Delete cart user
+const postDeleteCartUser = async (req, res) => {
+    let data = req.body;
+    await DeleteCartUser(data)
     res.send("Delete success!")
 }
 //read
@@ -203,5 +208,5 @@ module.exports = {
     postCreateCategory, getReadCategory, postUpdateCategory, postDeleteCategory, getCategories,
     postCreateProduct, getReadProduct, postUpdateProduct, postDeleteProduct, getProducts,
     postCreateImage, getReadImage, postUpdateImage, postDeleteImage, getImages,
-    postCreateCart, postUpdateCart, postDeleteCart, getCarts, postCreateOrder, postUpdateCartStatus, getOrders, postUpdateOrder, postDeleteOrder
+    postCreateCart, postUpdateCart, postDeleteCart, getCarts, postCreateOrder, postUpdateCartStatus, getOrders, postUpdateOrder, postDeleteOrder, postDeleteCartUser
 }

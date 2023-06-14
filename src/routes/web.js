@@ -7,9 +7,7 @@ const { postCreateUser } = require('../services/CRUDservices')
 const { LoginWithUsers, LoginWithAdmin, AuthTokenUsers, AuthTokenAdmin } = require('../services/Login')
 
 router.get('/', getHomePage)
-
 router.get('/users', getDemoEjs)
-
 router.post('/user',
     body('Phone').isLength({ min: 10 }).isInt(),
     body('PassWord').isLength({ min: 8 }),
@@ -32,17 +30,11 @@ router.post('/user',
         return res.status(200).json({ message: "success" });
     }
 )
-
 router.put('/user', postUpdateUsers)
-
 router.delete('/user', postDeleteUsers)
-
 router.post('/login-users', LoginWithUsers)
-
 router.post('/check-user', AuthTokenUsers)
-
 router.post('/login-admin', LoginWithAdmin)
-
 router.post('/check-admin', AuthTokenAdmin)
 
 module.exports = router;

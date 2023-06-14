@@ -2,9 +2,9 @@ const express = require('express');
 const routerAPI = express.Router();
 const {
     postCreateCategory, postUpdateCategory, postDeleteCategory, getCategories,
-    postCreateProduct, getReadProduct, postUpdateProduct, postDeleteProduct, getProducts,
-    postCreateImage, getReadImage, postUpdateImage, postDeleteImage, getImages,
-    postCreateCart, postUpdateCart, postDeleteCart, getCarts, postCreateOrder, postUpdateCartStatus, getOrders, postUpdateOrder, postDeleteOrder
+    postCreateProduct,  postUpdateProduct, postDeleteProduct, getProducts,
+    postCreateImage,  postUpdateImage, postDeleteImage, getImages,
+    postCreateCart, postUpdateCart, postDeleteCart, getCarts, postCreateOrder, postUpdateCartStatus, getOrders, postUpdateOrder, postDeleteOrder, postDeleteCartUser
 } = require('../controllers/APIController')
 
 //category
@@ -29,6 +29,8 @@ routerAPI.post('/cart', postCreateCart)
 routerAPI.put('/cart', postUpdateCart)
 //update status
 routerAPI.put('/update-status', postUpdateCartStatus)
+//delete cart users
+routerAPI.delete('/cart-user', postDeleteCartUser)
 routerAPI.delete('/cart', postDeleteCart)
 //order
 routerAPI.get('/orders', getOrders)
