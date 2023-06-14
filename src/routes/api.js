@@ -1,85 +1,39 @@
 const express = require('express');
 const routerAPI = express.Router();
 const {
-    postCreateCategory, getCreateCategory, getReadCategory, getUpdateCategory, postUpdateCategory, getDeleteCategory, postDeleteCategory, getCategories,
-    getCreateProduct, postCreateProduct, getReadProduct, getUpdateProduct, postUpdateProduct, getDeleteProduct, postDeleteProduct, getProducts,
-    getCreateImage, postCreateImage, getReadImage, getUpdateImage, postUpdateImage, getDeleteImage, postDeleteImage, getImages,
+    postCreateCategory, postUpdateCategory, postDeleteCategory, getCategories,
+    postCreateProduct, getReadProduct, postUpdateProduct, postDeleteProduct, getProducts,
+    postCreateImage, getReadImage, postUpdateImage, postDeleteImage, getImages,
     postCreateCart, postUpdateCart, postDeleteCart, getCarts, postCreateOrder, postUpdateCartStatus, getOrders, postUpdateOrder, postDeleteOrder
 } = require('../controllers/APIController')
 
-
 //category
 routerAPI.get('/categories', getCategories)
-
-routerAPI.get('/category', getReadCategory)
-
-// routerAPI.get('/create-category', getCreateCategory)
-
-// routerAPI.get('/update-category/:UserId', getUpdateCategory)
-
-// routerAPI.get('/delete-category/:UserId', getDeleteCategory)
-
-routerAPI.post('/create-a-category', postCreateCategory)
-
-routerAPI.put('/create-a-category', postUpdateCategory)
-
-routerAPI.delete('/create-a-category', postDeleteCategory)
-
+routerAPI.post('/category', postCreateCategory)
+routerAPI.put('/category', postUpdateCategory)
+routerAPI.delete('/category', postDeleteCategory)
 //Product
 routerAPI.get('/products', getProducts)
-
-routerAPI.get('/product', getReadProduct)
-
-// routerAPI.get('/create-product', getCreateProduct)
-
-// routerAPI.get('/update-product/:UserId', getUpdateProduct)
-
-// routerAPI.get('/delete-product/:UserId', getDeleteProduct)
-
-routerAPI.post('/create-a-product', postCreateProduct)
-
-routerAPI.put('/create-a-product', postUpdateProduct)
-
-routerAPI.delete('/create-a-product', postDeleteProduct)
-
+routerAPI.post('/product', postCreateProduct)
+routerAPI.put('/product', postUpdateProduct)
+routerAPI.delete('/product', postDeleteProduct)
 //Image
 routerAPI.get('/images', getImages)
-
-routerAPI.get('/image', getReadImage)
-
-// routerAPI.get('/create-image', getCreateImage)
-
-// routerAPI.get('/update-image/:UserId', getUpdateImage)
-
-// routerAPI.get('/delete-image/:UserId', getDeleteImage)
-
-routerAPI.post('/create-a-image', postCreateImage)
-
-routerAPI.put('/create-a-image', postUpdateImage)
-
-routerAPI.delete('/create-a-image', postDeleteImage)
-
+routerAPI.post('/image', postCreateImage)
+routerAPI.put('/image', postUpdateImage)
+routerAPI.delete('/image', postDeleteImage)
 //Cart
 routerAPI.get('/carts', getCarts)
-
-// routerAPI.get('/cart', getReadCart)
-
-routerAPI.post('/create-a-cart', postCreateCart)
-
+routerAPI.post('/cart', postCreateCart)
 //update quantity
-routerAPI.put('/create-a-cart', postUpdateCart)
+routerAPI.put('/cart', postUpdateCart)
 //update status
 routerAPI.put('/update-status', postUpdateCartStatus)
-
-routerAPI.delete('/create-a-cart', postDeleteCart)
-
+routerAPI.delete('/cart', postDeleteCart)
 //order
 routerAPI.get('/orders', getOrders)
-
-routerAPI.post('/create-a-order', postCreateOrder)
-
-routerAPI.put('/create-a-order', postUpdateOrder)
-
-routerAPI.delete('/create-a-order', postDeleteOrder)
+routerAPI.post('/order', postCreateOrder)
+routerAPI.put('/order', postUpdateOrder)
+routerAPI.delete('/order', postDeleteOrder)
 
 module.exports = routerAPI;

@@ -2,23 +2,15 @@ const express = require('express');
 const db = require('../models/index');
 const { body, validationResult } = require('express-validator');
 const router = express.Router();
-const { getHomePage, getDemoEjs, getCreateUsers, getUpdateUsers, postUpdateUsers, getDeleteUsers, postDeleteUsers } = require('../controllers/homeController')
+const { getHomePage, getDemoEjs, postUpdateUsers, postDeleteUsers } = require('../controllers/homeController')
 const { postCreateUser } = require('../services/CRUDservices')
-const { LoginWithUsers, LoginWithAdmin, AuthTokenUsers, LogoutWithUsers, RefreshWithUsers, AuthTokenAdmin } = require('../services/Login')
-
+const { LoginWithUsers, LoginWithAdmin, AuthTokenUsers, AuthTokenAdmin } = require('../services/Login')
 
 router.get('/', getHomePage)
 
 router.get('/users', getDemoEjs)
 
-// router.get('/create', getCreateUsers)
-
-// router.get('/update/:UserId', getUpdateUsers)
-
-// router.get('/delete/:UserId', getDeleteUsers)s
-
-
-router.post('/create-users',
+router.post('/user',
     body('Phone').isLength({ min: 10 }).isInt(),
     body('PassWord').isLength({ min: 8 }),
     body('Name').isLength({ max: 20 }),
@@ -41,17 +33,13 @@ router.post('/create-users',
     }
 )
 
-router.put('/create-users', postUpdateUsers)
+router.put('/user', postUpdateUsers)
 
-router.delete('/create-users', postDeleteUsers)
+router.delete('/user', postDeleteUsers)
 
 router.post('/login-users', LoginWithUsers)
 
 router.post('/check-user', AuthTokenUsers)
-
-// router.post('/refresh-users', RefreshWithUsers)
-
-// router.post('/logout-users', LogoutWithUsers)
 
 router.post('/login-admin', LoginWithAdmin)
 
